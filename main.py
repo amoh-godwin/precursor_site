@@ -5,12 +5,9 @@ from pydantic import BaseModel
 from deta import Deta
 
 
-with open('key.txt', mode='r') as k_f:
-    key = k_f.read()
-
 app = FastAPI()
 
-deta = Deta(key)
+deta = Deta()
 db = deta.Base('simpleDB')  # access your DB
 drive = deta.Drive("images")
 
