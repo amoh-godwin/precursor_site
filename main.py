@@ -34,20 +34,7 @@ async def create_upload_files(files: List[UploadFile] = File(...)):
 
 @app.get('/')
 def read_root():
-    content = """
-<body>
-<h1>Hello</h1>
-<form action="/files/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-<form action="/uploadfiles/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-</body>
-    """
-    return HTMLResponse(content=content)
+    return HTMLResponse(content=read_pages('index.html'))
 
 
 @app.get('/items/{item_id}')
