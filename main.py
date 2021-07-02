@@ -5,6 +5,8 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from deta import Deta
 
+from misc import read_pages
+
 
 with open('key.txt', mode='r') as k_f:
     key = k_f.read()
