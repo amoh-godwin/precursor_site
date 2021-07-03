@@ -80,6 +80,7 @@
                 padding: 8px;
                 border: solid 1px #e1e1e1;
                 border-radius: 2px;
+                font-family: Consolas, 'Courier New', monospace;
             }
 
             #img_header_cont {
@@ -109,6 +110,13 @@
             }
 
         </style>
+        <script>
+            function clicker() {
+                var tt = document.getElementById('ab');
+                var cont = document.getElementById('ar');
+                alert(cont.value)
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -124,22 +132,20 @@
             </ul>
         </nav>
         <main>
+            <form action="/files/" enctype="multipart/form-data" method="post">
             <aside>
-                <h1 class="ti" contenteditable="true">Create "Hello, World" in Python in 3 minutes!</h1>
+                <h1 id="ab" class="ti" contenteditable="true"><input type="text" /></h1>
             </aside>
             <div id="img_header_cont">
                 <img src="dash.jpeg" width="100%" height="100%" />
             </div>
+            <input name="files" type="file" multiple>
             <article class="post">
-                <form action="/files/" enctype="multipart/form-data" method="post">
-                    <input name="files" type="file" multiple>
-                    <input type="submit">
-                    </form>
-                    <form action="/uploadfiles/" enctype="multipart/form-data" method="post">
-                    <input name="files" type="file" multiple>
-                    <input type="submit">
-                </form>
+                <textarea></textarea>
             </article>
+            <input name="files" type="file" multiple>
+            <input type="submit">
+            </form>
         </main>
         <footer>
             <div style="padding: 8px; color: white;">
