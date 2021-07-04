@@ -1,7 +1,7 @@
 import os
 from typing import Optional, List
 
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from deta import Deta, service
@@ -90,9 +90,10 @@ def read_root():
 def front_create_post():
     return HTMLResponse(content=read_pages("create_post.html"))
 
-@app.get('/images{name}')
+@app.get('/images/{name}')
 def get_image(name: str):
-    pass
+    resp = drive.get(name)
+    return StreamingResponse(resp.iter_chunks(1024), media_type='image/png')
 
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
