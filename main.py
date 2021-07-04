@@ -98,4 +98,11 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 @app.get('/post/{title}')
 def read_post(title: str):
-    return list(art_db.fetch({'title': title}))
+    conts = read_pages('read_article.html')
+    row = art_db.fetch({'title': title})
+    row = row[0]
+    conts = conts.replace('{title}',  row['title'])
+    conts = conts.replace('{header_image}', row['header_image'])
+    conts = conts.replace('{content}', row['content'])
+
+    return HTMLResponse(content=conts)
