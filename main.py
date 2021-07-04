@@ -99,7 +99,8 @@ def read_item(item_id: int, q: Optional[str] = None):
 @app.get('/post/{key}')
 def read_post(key: str):
     conts = read_pages('read_article.html')
-    row = art_db.get(key)
+    row = list(art_db.fetch({'key': id}))
+    return row[0]
     conts = conts.replace('{title}',  row['title'])
     conts = conts.replace('{header_image}', row['header_image'])
     conts = conts.replace('{content}', row['content'])
