@@ -1,6 +1,6 @@
 from typing import Optional, List
 
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from deta import Deta
@@ -16,6 +16,11 @@ app = FastAPI()
 deta = Deta(key)
 db = deta.Base('simpleDB')  # access your DB
 drive = deta.Drive("images")
+
+
+@app.post("/createpost/")
+def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: str = Form(...)):
+    return {'status': "All is well for now"}
 
 
 @app.post("/files/")
