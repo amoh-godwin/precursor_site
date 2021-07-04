@@ -99,11 +99,11 @@ def get_image(name: str):
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
 
-@app.get('/posts/{title}')
-def read_posts(title: str):
+@app.get('/post/{title}')
+def read_post(title: str):
     conts = read_pages('read_article.html')
     row = next(art_db.fetch({'title': title}))
-    return row[0]
+
     conts = conts.replace('{title}',  row['title'])
     conts = conts.replace('{header_image}', row['header_image'])
     conts = conts.replace('{content}', row['content'])
