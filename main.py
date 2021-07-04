@@ -57,7 +57,7 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
     # save to db
     res = art_db.put({
         "title": title,
-        "header_image": 'images'+h_name,
+        "header_image": './images/'+h_name,
         "content": content,
         "tags": tags,
         "category": tags,
