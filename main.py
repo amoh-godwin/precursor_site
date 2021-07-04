@@ -20,7 +20,20 @@ drive = deta.Drive("images")
 
 @app.post("/createpost/")
 def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: List[UploadFile] = File(...)):
-    return {'status': "All is well for now"}
+    result = []
+    # save header file
+    f = headerfile.file
+    res = drive.put(headerfile.filename, f)
+    result.append(res)
+    # save thumbnail of header file
+    # other image files
+    for file in contentfiles:
+        name = file.filename
+        ff = file.file
+        res = drive.put(name, ff)
+        result.append(res)
+
+    return {'status': result, 'form': [title, content, tags, category]}
 
 
 @app.post("/files/")
