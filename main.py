@@ -96,7 +96,7 @@ def get_image(name: str):
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
 
-@app.get('/post/{key}')
+@app.get('/posts/{key}')
 def read_post(key: str):
     conts = read_pages('read_article.html')
     row = list(art_db.fetch({'key': key}))
