@@ -19,7 +19,7 @@ drive = deta.Drive("images")
 
 
 @app.post("/createpost/")
-def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: str = Form(...)):
+def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: UploadFile = File(...)):
     return {'status': "All is well for now"}
 
 
