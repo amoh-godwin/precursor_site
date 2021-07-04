@@ -22,9 +22,11 @@ drive = deta.Drive("images")
 @app.post("/createpost/")
 def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: List[UploadFile] = File(...)):
     result = []
+
     # save header file
+    h_name = headerfile.filename
     f = headerfile.file
-    res = drive.put(headerfile.filename, f)
+    res = drive.put(h_name, f)
     result.append(res)
     # save thumbnail of header file
     # other image files
