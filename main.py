@@ -41,20 +41,20 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
     # save header file
     h_name = headerfile.filename
     f = headerfile.file
-    res = save_image('./images/'+h_name, f)
+    res = drive.put(h_name, f)
     result.append(res)
     # save thumbnail of header file
     # other image files
     for file in contentfiles:
         name = file.filename
         ff = file.file
-        res = save_image('./images/'+name, ff)
+        res = drive.put(name, ff)
         result.append(res)
 
     # save to db
     res = art_db.put({
         "title": title,
-        "header_image": './images/'+h_name,
+        "header_image": '/images/'+h_name,
         "content": content,
         "tags": tags,
         "category": tags,
