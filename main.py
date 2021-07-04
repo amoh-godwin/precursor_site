@@ -1,4 +1,4 @@
-from os import name
+import os
 from typing import Optional, List
 
 from fastapi.staticfiles import StaticFiles
