@@ -2,8 +2,8 @@ from os import name
 from typing import Optional, List
 
 from fastapi.staticfiles import StaticFiles
-from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from deta import Deta
 
