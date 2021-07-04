@@ -12,15 +12,32 @@ app = FastAPI()
 
 deta = Deta()
 db = deta.Base('simpleDB')  # access your DB
+art_db = deta.Base('articles')
 drive = deta.Drive("images")
 
+
+art_db_model = {
+    "post_id": int,
+    "title": str,
+    "header_image": str,
+    "content": str,
+    "tags": str,
+    "category": str,
+    "published": bool,
+    "thumbnail": str,
+    "author": str,
+    "member_only": bool
+
+}
 
 @app.post("/createpost/")
 def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: List[UploadFile] = File(...)):
     result = []
+
     # save header file
+    h_name = headerfile.filename
     f = headerfile.file
-    res = drive.put(headerfile.filename, f)
+    res = drive.put(h_name, f)
     result.append(res)
     # save thumbnail of header file
     # other image files
@@ -29,6 +46,19 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
         ff = file.file
         res = drive.put(name, ff)
         result.append(res)
+
+    # save to db
+    res = art_db.put({
+        "title": title,
+        "header_image": 'images'+h_name,
+        "content": content,
+        "tags": tags,
+        "category": tags,
+        "published": True,
+        "member_only": False
+    })
+
+    result.append(res)
 
     return {'status': result, 'form': [title, content, tags, category]}
 
