@@ -15,6 +15,7 @@ app = FastAPI()
 
 deta = Deta(key)
 db = deta.Base('simpleDB')  # access your DB
+art_db = deta.Base('articles')
 drive = deta.Drive("images")
 
 
