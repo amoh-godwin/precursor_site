@@ -90,6 +90,10 @@ def read_root():
 def front_create_post():
     return HTMLResponse(content=read_pages("create_post.html"))
 
+@app.get('/images{name}')
+def get_image(name: str):
+    pass
+
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
