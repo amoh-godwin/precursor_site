@@ -100,7 +100,7 @@ def read_item(item_id: int, q: Optional[str] = None):
 def read_post(title: str):
     conts = read_pages('read_article.html')
     row = art_db.fetch({'title': title})
-    row = row[0]
+    return row[0]
     conts = conts.replace('{title}',  row['title'])
     conts = conts.replace('{header_image}', row['header_image'])
     conts = conts.replace('{content}', row['content'])
