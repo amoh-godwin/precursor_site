@@ -1,14 +1,18 @@
+import os
 from typing import Optional, List
 
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import HTMLResponse
+from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
-from deta import Deta
+from deta import Deta, service
 
-from misc import read_pages
+from misc import read_pages, save_image
 
 
 app = FastAPI()
+app.mount('/static', StaticFiles(directory='static'), name="static")
+app.mount('/images', StaticFiles(directory='images'), name="images")
 
 deta = Deta()
 db = deta.Base('simpleDB')  # access your DB
@@ -37,20 +41,20 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
     # save header file
     h_name = headerfile.filename
     f = headerfile.file
-    res = drive.put(h_name, f)
+    res = save_image('./images/'+h_name, f)
     result.append(res)
     # save thumbnail of header file
     # other image files
     for file in contentfiles:
         name = file.filename
         ff = file.file
-        res = drive.put(name, ff)
+        res = save_image('./images/'+name, ff)
         result.append(res)
 
     # save to db
     res = art_db.put({
         "title": title,
-        "header_image": 'images'+h_name,
+        "header_image": './images/'+h_name,
         "content": content,
         "tags": tags,
         "category": tags,
