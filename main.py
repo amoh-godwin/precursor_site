@@ -19,6 +19,20 @@ art_db = deta.Base('articles')
 drive = deta.Drive("images")
 
 
+art_db_model = {
+    "post_id": int,
+    "title": str,
+    "header_image": str,
+    "content": str,
+    "tags": str,
+    "category": str,
+    "published": bool,
+    "thumbnail": str,
+    "author": str,
+    "member_only": bool
+
+}
+
 @app.post("/createpost/")
 def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: List[UploadFile] = File(...)):
     result = []
