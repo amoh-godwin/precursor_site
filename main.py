@@ -42,7 +42,7 @@ def read_root():
     return HTMLResponse(content=read_pages('index.html'))
 
 
-@app.get('/create_post/')
+@app.get('/create/post')
 def front_create_post():
     return HTMLResponse(content=read_pages("create_post.html"))
 
