@@ -1,8 +1,11 @@
 from typing import Optional, List
-from fastapi import FastAPI, UploadFile, File
+
+from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 from deta import Deta
+
+from misc import read_pages
 
 
 app = FastAPI()
@@ -10,6 +13,24 @@ app = FastAPI()
 deta = Deta()
 db = deta.Base('simpleDB')  # access your DB
 drive = deta.Drive("images")
+
+
+@app.post("/createpost/")
+def create_post(title: str = Form(...), headerfile: UploadFile = File(...), content: str = Form(...), tags: str = Form(...), category: str = Form(...), contentfiles: List[UploadFile] = File(...)):
+    result = []
+    # save header file
+    f = headerfile.file
+    res = drive.put(headerfile.filename, f)
+    result.append(res)
+    # save thumbnail of header file
+    # other image files
+    for file in contentfiles:
+        name = file.filename
+        ff = file.file
+        res = drive.put(name, ff)
+        result.append(res)
+
+    return {'status': result, 'form': [title, content, tags, category]}
 
 
 @app.post("/files/")
@@ -28,21 +49,12 @@ async def create_upload_files(files: List[UploadFile] = File(...)):
 
 @app.get('/')
 def read_root():
-    content = """
-<body>
-<h1>Hello</h1>
-<form action="/files/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-<form action="/uploadfiles/" enctype="multipart/form-data" method="post">
-<input name="files" type="file" multiple>
-<input type="submit">
-</form>
-</body>
-    """
-    return HTMLResponse(content=content)
+    return HTMLResponse(content=read_pages('index.html'))
 
+
+@app.get('/create/post')
+def front_create_post():
+    return HTMLResponse(content=read_pages("create_post.html"))
 
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
