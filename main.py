@@ -1,5 +1,7 @@
+from os import name
 from typing import Optional, List
 
+from fastapi.staticfiles import StaticFiles
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
@@ -12,6 +14,8 @@ with open('key.txt', mode='r') as k_f:
     key = k_f.read()
 
 app = FastAPI()
+app.mount('/static', StaticFiles(directory='static'), name="static")
+app.mount('/images', StaticFiles(directory='images'), name="images")
 
 deta = Deta(key)
 db = deta.Base('simpleDB')  # access your DB
