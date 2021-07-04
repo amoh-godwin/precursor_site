@@ -1,18 +1,15 @@
 import os
 from typing import Optional, List
 
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, StreamingResponse
 from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from deta import Deta, service
 
-from misc import read_pages, save_image
+from misc import read_pages
 
 
 app = FastAPI()
-app.mount('/static', StaticFiles(directory='static'), name="static")
-app.mount('/images', StaticFiles(directory='images'), name="images")
 
 deta = Deta()
 db = deta.Base('simpleDB')  # access your DB
@@ -41,20 +38,20 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
     # save header file
     h_name = headerfile.filename
     f = headerfile.file
-    res = save_image('./images/'+h_name, f)
+    res = drive.put(h_name, f)
     result.append(res)
     # save thumbnail of header file
     # other image files
     for file in contentfiles:
         name = file.filename
         ff = file.file
-        res = save_image('./images/'+name, ff)
+        res = drive.put(name, ff)
         result.append(res)
 
     # save to db
     res = art_db.put({
         "title": title,
-        "header_image": './images/'+h_name,
+        "header_image": '/images/'+h_name,
         "content": content,
         "tags": tags,
         "category": tags,
@@ -89,6 +86,11 @@ def read_root():
 @app.get('/create/post')
 def front_create_post():
     return HTMLResponse(content=read_pages("create_post.html"))
+
+@app.get('/images/{name}')
+def get_image(name: str):
+    resp = drive.get(name)
+    return StreamingResponse(resp.iter_chunks(1024), media_type='image/png')
 
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
