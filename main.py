@@ -50,6 +50,19 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
         res = drive.put(name, ff)
         result.append(res)
 
+    # save to db
+    res = art_db.put({
+        "title": title,
+        "header_image": 'images'+h_name,
+        "content": content,
+        "tags": tags,
+        "category": tags,
+        "published": True,
+        "member_only": False
+    })
+
+    result.append(res)
+
     return {'status': result, 'form': [title, content, tags, category]}
 
 
