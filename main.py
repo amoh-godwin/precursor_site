@@ -98,3 +98,7 @@ def get_image(name: str):
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
+
+@app.get('/post/{title}')
+def read_post(title: str):
+    return list(art_db.fetch({'title': title}))
