@@ -1,3 +1,10 @@
+import os
+
+if not os.path.exists('./static'):
+    os.makedirs('./static')
+
+if not os.path.exists('/images'):
+    os.makedirs('./images')
 
 
 def read_pages(page: str):
