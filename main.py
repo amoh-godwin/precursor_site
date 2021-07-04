@@ -100,7 +100,7 @@ def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
 
 @app.get('/posts/{key}')
-def read_post(key: str):
+def read_posts(key: str):
     conts = read_pages('read_article.html')
     row = list(art_db.fetch({'key': key}))
     return row[0]
