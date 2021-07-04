@@ -6,7 +6,7 @@ from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from deta import Deta, service
 
-from misc import read_pages, save_image
+from misc import read_pages
 
 
 with open('key.txt', mode='r') as k_f:
