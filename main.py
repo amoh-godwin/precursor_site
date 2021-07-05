@@ -6,7 +6,7 @@ from fastapi import FastAPI, UploadFile, File, Form
 from pydantic import BaseModel
 from deta import Deta, service
 
-from misc import read_pages, fix_md_images_link
+from misc import read_pages, replace_drive_link
 
 
 with open('key.txt', mode='r') as k_f:
@@ -52,7 +52,7 @@ def create_post(title: str = Form(...), headerfile: UploadFile = File(...), cont
         result.append(res)
 
     # Fix the markdown
-    content = fix_md_images_link(content)
+    content = replace_drive_link(content)
 
     # save to db
     res = art_db.put({
