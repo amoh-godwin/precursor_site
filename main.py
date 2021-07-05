@@ -98,6 +98,16 @@ def get_image(name: str):
     resp = drive.get(name)
     return StreamingResponse(resp.iter_chunks(1024), media_type='image/png')
 
+
+def get_nav():
+    list_str = """<li>Python</li>
+            <li>Artificial Intelligence</li>
+            <li>Machine Learning</li>
+            <li>Data Science</li>
+            <li>Software Development</li>"""
+
+    return list_str
+
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
