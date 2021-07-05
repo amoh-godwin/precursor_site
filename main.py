@@ -18,6 +18,7 @@ deta = Deta(key)
 db = deta.Base('simpleDB')  # access your DB
 art_db = deta.Base('articles')
 drive = deta.Drive("images")
+static_drive = deta.Drive("static")
 
 
 art_db_model = {
@@ -102,6 +103,10 @@ def get_image(name: str):
     resp = drive.get(name)
     return StreamingResponse(resp.iter_chunks(1024), media_type='image/png')
 
+@app.get('/static/{filename}')
+def get_static(filename: str):
+    resp = static_drive.get(filename)
+    return StreamingResponse(resp.iter_chunks(1024), media_type='text/css')
 
 def get_nav():
     nav_str = """<li>Python</li>
