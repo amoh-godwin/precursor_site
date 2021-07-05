@@ -25,6 +25,7 @@ def upload_static():
     with open('./static/site.css', 'r') as f:
         static_drive.put('site.css', f)
 
+upload_static()
 
 art_db_model = {
     "post_id": int,
