@@ -21,6 +21,11 @@ drive = deta.Drive("images")
 static_drive = deta.Drive("static")
 
 
+def upload_static():
+    with open('./static/site.css', 'r') as f:
+        static_drive.put('site.css', f)
+
+
 art_db_model = {
     "post_id": int,
     "title": str,
