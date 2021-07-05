@@ -86,12 +86,16 @@ async def create_upload_files(files: List[UploadFile] = File(...)):
 
 @app.get('/')
 def read_root():
-    return HTMLResponse(content=read_pages('index.html'))
+    conts = read_pages('index.html')
+    conts = conts.replace('{nav}', get_nav())
+    return HTMLResponse(content=conts)
 
 
 @app.get('/create/post')
 def front_create_post():
-    return HTMLResponse(content=read_pages("create_post.html"))
+    conts = read_pages("create_post.html")
+    conts = conts.replace('{nav}', get_nav())
+    return HTMLResponse(content=conts)
 
 @app.get('/images/{name}')
 def get_image(name: str):
