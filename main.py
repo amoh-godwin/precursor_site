@@ -102,10 +102,9 @@ def get_image(name: str):
 
 def get_nav():
     nav_str = """<li>Python</li>
-            <li>Artificial Intelligence</li>
-            <li>Machine Learning</li>
-            <li>Data Science</li>
-            <li>Software Development</li>"""
+            <li>Qt</li>
+            <li>QML</li>
+            <li>FastAPI</li>"""
 
     return nav_str
 
