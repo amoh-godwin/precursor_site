@@ -100,13 +100,13 @@ def get_image(name: str):
 
 
 def get_nav():
-    list_str = """<li>Python</li>
+    nav_str = """<li>Python</li>
             <li>Artificial Intelligence</li>
             <li>Machine Learning</li>
             <li>Data Science</li>
             <li>Software Development</li>"""
 
-    return list_str
+    return nav_str
 
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
