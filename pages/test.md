@@ -14,3 +14,7 @@ sys.exit(0)
 Did you see that?
 
 End of this tutorial, see you in the next one.
+
+![](./images/dash.jpeg)
+
+

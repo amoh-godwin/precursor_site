@@ -1,6 +1,6 @@
 
 def fix_md_images_link(md: str):
-    return md.replace('(./images/', '(/images/')
+    return md.replace('(./noneducational_images/', '(/images/')
 
 def read_pages(page: str):
     dir = './pages/'
