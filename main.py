@@ -122,4 +122,7 @@ def read_post(title: str):
     conts = conts.replace('{header_image}', row['header_image'])
     conts = conts.replace('{content}', row['content'])
 
+    # others
+    conts = conts.replace('{nav}', get_nav())
+
     return HTMLResponse(content=conts)
