@@ -95,6 +95,16 @@ def get_image(name: str):
     resp = drive.get(name)
     return StreamingResponse(resp.iter_chunks(1024), media_type='image/png')
 
+
+def get_nav():
+    nav_str = """<li>Python</li>
+            <li>Artificial Intelligence</li>
+            <li>Machine Learning</li>
+            <li>Data Science</li>
+            <li>Software Development</li>"""
+
+    return nav_str
+
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
@@ -108,5 +118,8 @@ def read_post(title: str):
     conts = conts.replace('{title}',  row['title'])
     conts = conts.replace('{header_image}', row['header_image'])
     conts = conts.replace('{content}', row['content'])
+
+    # others
+    conts = conts.replace('{nav}', get_nav())
 
     return HTMLResponse(content=conts)
