@@ -116,10 +116,16 @@ def get_static(filename: str):
 def get_nav():
 
     nav_str = """<li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Python</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Qt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">QML</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">FastAPI</a>
                   </li>"""
 
     return nav_str
