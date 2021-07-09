@@ -22,7 +22,6 @@ def upload_static():
     with open('./static/site.css', 'r') as f:
         static_drive.put('site.css', f)
 
-upload_static()
 
 art_db_model = {
     "post_id": int,
@@ -112,10 +111,19 @@ def get_static(filename: str):
     return StreamingResponse(resp.iter_chunks(1024), media_type='text/css')
 
 def get_nav():
-    nav_str = """<li>Python</li>
-            <li>Qt</li>
-            <li>QML</li>
-            <li>FastAPI</li>"""
+
+    nav_str = """<li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Python</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Qt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">QML</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">FastAPI</a>
+                  </li>"""
 
     return nav_str
 

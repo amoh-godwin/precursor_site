@@ -2,23 +2,174 @@
 <html>
     <head>
         <title>DanielIT | Welcome</title>
-        <link href="/static/site.css" rel="stylesheet" />
+        <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+        <style>
+            nav {
+                height: 48px;
+                color: black;
+                background-color: white;
+            }
+
+            aside {
+                width: 100%;
+                height: 240px;
+                background-color: #0a58ca;
+                color: white;
+                padding: 16px;
+            }
+
+            main {
+                margin-top: 24px;
+                margin-left: 48px;
+                margin-right: 48px;
+            }
+
+            .card-group div {
+                margin-right: 24px;
+            }
+
+            footer {
+                padding: 16px;
+                height: 88px;
+                color: white;
+                background-color: purple;
+            }
+
+
+        </style>
     </head>
     <body>
-        <header>
-            <h2>Daniel IT</h2>
-        </header>
-        <nav>
-            <ul>
-                {nav}
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">PracticalWeb</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  {nav}
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
         </nav>
+
+        <aside>
+            <p class="display-4">Welcome to PracticalWeb</p>
+            <p class="mt-4">Find tutorials, articles and more</p>
+            <form class="row g-3">
+                <div class="col-auto">
+                    <input class="form-control" type="text" placeholder="Default input" aria-label="default input example" style="width: 400px;">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-3">Search</button>
+                </div>
+            </form>
+        </aside>
         <main>
-            <h3>Welcome to DanielIT</h3>
-            <ul>
-                <li>Python beginers: Zero to Hero</li>
-            </ul>
+
+            <div class="mb-5">
+                <p class="display-6">| Python</p>
+                <p>Learn Python programming</p>
+                <div class="card-group" style="margin-top: 24px;">
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./dash.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./dash.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./dash.jpeg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="#">View all Python tutorials ></a>
+
+            </div>
+
+            <div class="mb-5">
+                <p class="display-6">| Qt</p>
+                <p>Learn Qt programming</p>
+                <div class="card-group" style="margin-top: 24px;">
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./miami.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./miami.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./miami.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="#">View all Qt tutorials ></a>
+
+            </div>
+
+            <div class="mb-5">
+                <p class="display-6">| QML</p>
+                <p>Learn QML programming</p>
+                <div class="card-group" style="margin-top: 24px;">
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./time.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./time.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm mb-5 bg-body rounded" style="width: 18rem;">
+                        <img src="./time.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <a href="#">View all QML tutorials ></a>
+
+            </div>
+
         </main>
-        <footer></footer>
+        <footer>
+            <p class="heading-5">&copy;2021 PracticalWeb, powered by DanielIT</p>
+        </footer>
     </body>
 </html>

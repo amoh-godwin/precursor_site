@@ -2,16 +2,26 @@
 <html>
     <head>
         <title>DanielIT | Welcome</title>
-        <link href="/static/site.css" rel="stylesheet" />
+        <link href="../static/site.css" rel="stylesheet" />
+        <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     </head>
     <body>
-        <header>
-            <h2>PracticalWeb</h2>
-        </header>
-        <nav>
-            <ul>
-                {nav}
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">PracticalWeb</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  {nav}
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
         </nav>
         <main>
             <form action="/createpost/" enctype="multipart/form-data" method="post">
@@ -24,8 +34,8 @@
                 <input name="headerfile" type="file" />
                 <article class="post">
                     <textarea name="content" id="content"></textarea>
-                    <input type="text" name="tags" id="tags" style="width: 100%; margin-top: 12px;" />
-                    <input type="text" name="category" id="category" style="width: 100%; margin-top: 12px;" />
+                    <input type="text" name="tags" id="tags" style="width: 100%; margin-top: 12px;" placeholder="Tags" />
+                    <input type="text" name="category" id="category" style="width: 100%; margin-top: 12px;" placeholder="Category" />
                 </article>
                 <input name="contentfiles" type="file" multiple>
                 
