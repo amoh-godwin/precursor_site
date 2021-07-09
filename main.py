@@ -114,10 +114,13 @@ def get_static(filename: str):
     return StreamingResponse(resp.iter_chunks(1024), media_type='text/css')
 
 def get_nav():
-    nav_str = """<li>Python</li>
-            <li>Qt</li>
-            <li>QML</li>
-            <li>FastAPI</li>"""
+
+    nav_str = """<li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>"""
 
     return nav_str
 
