@@ -2,7 +2,7 @@ import os
 from typing import Optional, List
 
 from fastapi.responses import HTMLResponse, StreamingResponse
-from fastapi import FastAPI, UploadFile, File, Form
+from fastapi import FastAPI, UploadFile, File, Form, Header, Request
 from pydantic import BaseModel
 from deta import Deta, service
 
@@ -133,6 +133,16 @@ def get_nav():
 @app.get('/items/{item_id}')
 def read_item(item_id: int, q: Optional[str] = None):
     return {'item_id': item_id, 'q': q}
+
+@app.get('/read')
+def read_header(request: Request):
+    cl = {}
+    no = 0
+    for x in request:
+        cl[no] = str(request[x])
+        no += 1
+
+    return {"client host": cl}
 
 @app.get('/post/{title}')
 def read_post(title: str):
