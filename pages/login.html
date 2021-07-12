@@ -1,0 +1,108 @@
+<!Doctype html>
+<html>
+	<head>
+		<link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	</head>
+	<style>
+		html, body {
+			height: 100%;
+		}
+		
+		.box {
+			box-shadow: 0 0 8px 1px rgba(0,0,0,0.4);
+		}
+		
+		.refer {
+			text-decoration: none;
+			color: dodgerblue;
+		}
+		
+		.refer:hover {
+			text-decoration: underline;
+		}
+
+        .user_image {
+            width: 100px;
+            height: 100px;
+        }
+		
+	</style>
+	<body class="w3-light-grey" style="display: flex; justify-content: center;" onload="stage();">
+        <div class="full w3-orange w3-text-white w3-center" style="display: none; position: fixed; top:0;">
+            <p class="w3-margin-0">Sorry, We could not reach our Servers! Please check your network connection</p>
+        </div>
+
+		<div class="w3-white box" style="align-self: center; padding: 24px; width: 25%;" id="username">
+
+			<div>
+				<h2 class="w3-margin-0 w3-padding-0 w3-text-dark-grey w3-opacity">Sign In Now,</h2>
+			</div>
+			<div class="mb-5">
+				<p class="">to start sharing!</p>
+			</div>
+
+			<form method="post">
+				<div class="mb-3">
+					<input type="email" class="form-control" id="email" placeholder="Enter your Email">
+				</div>
+				<div class="">
+                    <a id="next_btn" class="btn btn-primary" onclick="emailSignIn()">Next</a>
+				</div>
+			</form>
+
+			<div class="w3-padding-32">
+			</div>
+
+		</div>
+
+        <div class="quarter w3-white shadow-1" style="display: none; align-self: center; padding: 24px;" id="password">
+
+            <div>
+                <h2 class="w3-margin-0 w3-padding-0 w3-text-dark-grey w3-opacity">Continue</h2>
+            </div>
+            <div class="w3-padding-8">
+                <p class="w3-margin-0 w3-padding-0 w3-text-grey">sign in</p>
+            </div>
+            <div class="w3-padding-16" style="display: flex; justify-content: center;">
+                <div class="user_image" id="user_image">
+                    <img src="" width="100%" height="100%" style="display: none" class="w3-circle" id="user_img" />
+                    <div class="user_image w3-green w3-circle" style="display: flex; justify-content: center;" id="user_f_img">
+                        <p class="w3-margin-0 w3-jumbo" style="align-self: center;" id="user_f_name"></p>
+                    </div>
+                </div>
+            </div>
+
+            <form class="w3-padding-16" method="post">
+
+                <div class="w3-padding-16" style="display: none" id="pass_error">
+                    <p class="w3-margin-0 w3-padding-0 w3-small"><span class="w3-text-blue">Password Hint: </span>
+                        <span id="hint"></span>
+                    </p>
+                </div>
+
+                <div class="w3-padding-16">
+                    <input type="password" id="pass" class="w3-input" placeholder="password" style="" />
+                </div>
+
+                <div class="w3-padding-16">
+                    <a href="" class="refer" onclick="unset('user')">
+                    <p class="w3-margin-0 w3-padding-0 w3-small" id="refer"></p>
+                    <p class="w3-margin-0 w3-padding-0 w3-small">Sign in as a different user</p>
+                    </a>
+                </div>
+
+                <div class="w3-padding-16">
+                    <a name="sign_in" class="w3-btn w3-blue w3-round" id="sign_in" onclick="passwordSignIn()">Sign In</a>
+                </div>
+
+            </form>
+
+        </div>
+
+		<div class="" style="display:none; justify-content: center; align-items: center;" id="loader">
+			<div>
+				<i class="w3-text-teal fa fa-spinner fa-5x fa-spin"></i>
+			</div>
+		</div>
+	</body>
+</html>
