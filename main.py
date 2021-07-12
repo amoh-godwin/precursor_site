@@ -9,6 +9,8 @@ from deta import Deta, service
 from misc import read_pages, replace_drive_link
 
 
+key = os.environ['DETA_DEFAULT_KEY']
+
 app = FastAPI()
 
 deta = Deta()
@@ -122,7 +124,7 @@ def get_nav():
                     <a class="nav-link" href="#">QML</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="https://l0koaz.deta.dev/read">FastAPI</a>
+                    <a class="nav-link" href="#">FastAPI</a>
                   </li>"""
 
     return nav_str
