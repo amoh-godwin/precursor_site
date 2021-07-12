@@ -9,8 +9,6 @@ from deta import Deta, service
 from misc import read_pages, replace_drive_link
 
 
-key = os.environ['DETA_DEFAULT_KEY']
-
 app = FastAPI()
 
 deta = Deta()
